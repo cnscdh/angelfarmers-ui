@@ -1,0 +1,7 @@
+export const FB_APIKEY="AIzaSyDJDc7CXj2eRxoRQGUK_uOygS-01wSPn24"
+export const FB_authDomain="elaborate-hash-337612.firebaseapp.com"
+export const FB_projectId="elaborate-hash-337612"
+export const FB_storageBucket="elaborate-hash-337612.appspot.com"
+export const FB_messagingSenderId="1062896020602"
+export const FB_appId="1:1062896020602:web:7c81887a93abc59b919fc3"
+export const FB_measurementId="G-0N5NH904T5"
