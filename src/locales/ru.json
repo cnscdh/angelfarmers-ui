@@ -450,7 +450,11 @@
   "TOP PROFITS":"ТОП ДОХОД",
   "TOP AWAX": "ТОП AWAX",
   "AWAX PRESALE": "AWAX ПРЕДПРОДАЖА",
-  "left": "осталось"
+  "left": "осталось",
+  "crop": "урожай",
+  "expense": "расход",
+  "seed cost": "семена",
+  "Gold enough": "Золота хватит"
 
 
 }
