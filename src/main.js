@@ -39,7 +39,7 @@ Vue.use(firestorePlugin)
 Vue.config.productionTip = false
 Vue.use(Toast, {});
 Vue.use(VueAnalytics, {
-  id: 'UA-135285458-1',
+  id: 'UA-222108984-1',
   router
 });
 
