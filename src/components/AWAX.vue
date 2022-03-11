@@ -23,58 +23,7 @@
                             </strong>
                         </small>
                     </v-progress-linear>
-                </v-card-subtitle>                            
-                <v-card-title>
-                    {{$t("Top Farms")}}
-                    <v-spacer></v-spacer>
-                    <v-btn icon @click = 'updateAllFarmsList()' class="white--text">
-                        <v-icon>mdi-cached</v-icon>
-                    </v-btn>                      
-                </v-card-title>        
-                <v-card-subtitle class="white--text">
-                    {{$t("Total Farms")}}:
-                    <strong>{{all_farms.length}}</strong><br/>
-                    <span v-if="total_balance_wax>0">
-                        {{$t("TOTAL BALANCE")}}: {{ formatAsset(total_balance_wax) }}￦
-                        <strong>(${{ formatAsset(total_balance_usd) }})</strong><br/>
-                    </span>
-                    <!-- {{$t("TOTAL AWAX BALANCE")}}: <strong>{{ formatAsset(total_awax_balance) }}₳</strong><br/> -->
-                </v-card-subtitle>
-                <v-tabs>
-                    <v-spacer></v-spacer>
-                    <v-tab @click="updateAllFarmsList('awax')">{{$t('TOP AWAX')}}</v-tab>
-                    <v-tab @click="updateAllFarmsList('profit')">{{$t('TOP PROFITS')}}</v-tab>
-                </v-tabs>
-
-                <v-data-table
-                    :headers="headersAllFarms"
-                    :items="farmsWithIndex"
-                    item-key="account_name" 
-                    class="elevation-1 mt-2" dense :items-per-page="10"
-                >
-                    <template v-slot:item.num="{ item }">
-                        <strong>
-                            {{item.index}}
-                        </strong>
-                    </template>
-                    <template v-slot:item.account_name="{ item }">
-                        <strong>
-                            <a @click.prevent="addFarm(item.account_name)">
-                                {{item.account_name}}
-                            </a>
-                        </strong>
-                    </template>
-                    <template v-slot:item.profit_usd="{ item }">
-                        <span v-if="item.profit_usd>0">
-                            <strong>${{ formatAsset(item.profit_usd) }}</strong>
-                        </span>
-                    </template>
-                    <template v-slot:item.awax_balance="{ item }">
-                        <span v-if="item.awax_balance && item.awax_balance>0">
-                            {{ formatAsset(item.awax_balance) }}₳
-                        </span>                    
-                    </template>   
-                </v-data-table>
+                </v-card-subtitle>                                           
             </v-card>
         </v-col>        
     </v-row>
@@ -85,7 +34,7 @@
 const {db, calcFarmIncome} = require('@/db');
 
 export default {
-    name: "TopFarms",
+    name: "AWAX",
     data() {
         return {
             sort_by: "awax",
