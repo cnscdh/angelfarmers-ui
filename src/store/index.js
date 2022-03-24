@@ -58,6 +58,8 @@ export default new Vuex.Store({
       send_food_to: '',       // отправлять еду на адреса
       send_barley_seeds_to: '', // отправлять семена барли
       hide: false, // прятать диалог с настройками
+      check_cpu_level: true,
+      use_stored_mining: false,
     },
     updatingPrices: false,
     updatingInfo: false,
@@ -77,6 +79,7 @@ export default new Vuex.Store({
     showAtomicPanel: false,
     showAlcorOrderbook: false,
     avatars: [],
+    showTopFarms: true,
   },
   mutations: {
     // Перейти в режим обновления
@@ -246,6 +249,7 @@ export default new Vuex.Store({
     loadUserMenuItems(context) {
       context.state.menu_items = [
         { title: i18n.t('FARMS'), icon: 'mdi-view-dashboard', link: '/' },
+        { title: i18n.t('AVATARS'), icon: 'mdi-format-list-bulleted', link: '/avatars'  },
         // { title: i18n.t('ATOMIC PANEL'), icon: 'mdi-atom', link: '/atomic-panel'  },
         // { title: i18n.t('ATOMIC BUYER'), icon: 'mdi-atom', link: '/atomic-buyer'  },
         // { title: i18n.t('ALL FARMS'), icon: 'mdi-format-list-bulleted', link: '/all-farms'  },
@@ -254,8 +258,7 @@ export default new Vuex.Store({
       ]
       if (context.state.userAccount == "ehcza.wam") {
         // меню для админа
-        context.state.menu_items.push(
-        { title: i18n.t('AVATARS'), icon: 'mdi-format-list-bulleted', link: '/avatars'  });
+        // context.state.menu_items.push(
         // { title: this.$t('ALL FARMS'), icon: 'mdi-format-list-bulleted', link: '/all-farms'  });
         // context.state.menu_items.push(
         // { title: i18n.t('MY ATOMIC SALES'), icon: 'mdi-atom', link: '/atomic-sales'  });

@@ -58,7 +58,7 @@ Vue.mixin({
         }
 
         // проверим не перегрелся ли CPU 
-        if (game.account.cpu_used_percent>=100) {
+        if (game.account.cpu_used_percent>=100 && game.settings.check_cpu_level) {
             console.log(game.account_name + " CPU 100% перегрето. подождем");
             return;
         }
@@ -113,8 +113,8 @@ Vue.mixin({
                 }
                     
                 // Если инструмент готов к работе, заберем результат
-                var crop_date = new Date(parseInt(tool["next_availability"]) * 1000);
-                if (crop_date < new Date()) {
+                // var crop_date = new Date(parseInt(tool["next_availability"]) * 1000);
+                if (tool.next_date < new Date()) {
                     const res = await this.fw_claim(tool["asset_id"], game.account_name, pkey, delegate);
                     if (res.status===true) {
                         this.log_action(this.$t("Claimed") + " " + this.$t(tool["name"]), res.result, this.$t(tool["name"]), tool["asset_id"]);
@@ -396,6 +396,13 @@ Vue.mixin({
             // console.log('all actions are paused on ' + game.account_name);
             return;
         }
+        
+        // проверим не перегрелся ли CPU 
+        if (game.account.cpu_used_percent>=100 && game.settings.check_cpu_level) {
+            console.log(game.account_name + " CPU 100% перегрето. подождем");
+            return;
+        }
+
         // если есть приватный ключ, используем его. если есть вакс логин, то сбрасываем ключ
         let pkey = game.settings.private_key && game.settings.private_key!='' ? game.settings.private_key : null;
         pkey = game.wax_login ? null : pkey;

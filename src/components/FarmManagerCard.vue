@@ -114,6 +114,18 @@
                      :label="$t('Wear buildings when possible')" class="ma-0 pa-0"></v-checkbox>
                 </v-col>
                 <v-col  class="mt-0 pt-0 mb-0 pb-0">
+                    <v-checkbox dense @change="updateFarm()" v-model="farm.settings.check_cpu_level" 
+                     :disabled="!farm.managed"
+                     :label="$t('Check CPU Level')" class="ma-0 pa-0"></v-checkbox>
+                </v-col>
+            </v-row>
+            <v-row class="mb-0 pb-0 mt-0 pt-0">
+                <v-col  class="mt-0 pt-0 mb-0 pb-0">
+                    <v-checkbox dense @change="updateFarm()" v-model="farm.settings.use_stored_mining" 
+                     :disabled="!farm.managed"
+                     :label="$t('Use stores from members')" class="ma-0 pa-0"></v-checkbox>
+                </v-col>
+                <v-col  class="mt-0 pt-0 mb-0 pb-0">
                 </v-col>
             </v-row>
 
